@@ -1,43 +1,63 @@
-import { useState } from 'react';
-import { Container, Group, Burger } from '@mantine/core';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Container, Group, Burger, Menu, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-
 import classes from './styles/Navbar.module.css';
-
-const links = [
-  { link: '/music', label: 'Music' },
-  { link: '/merch', label: 'Merch' },
-  { link: '/visuals', label: 'Visuals' },
-  { link: '/booking', label: 'Booking inquiries' },
-];
 
 export function Navbar() {
   const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
-
-  const items = links.map((link) => (
-    <a
-      key={link.label}
-      href={link.link}
-      className={classes.link}
-      data-active={active === link.link || undefined}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-      }}
-    >
-      {link.label}
-    </a>
-  ));
 
   return (
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
-        <Group gap={5} visibleFrom="xs">
-          {items}
+        <Image src="/logo.png" onClick={} width={55} height={55} alt="BriLive247" />
+        <Group gap={12} visibleFrom="xs">
+          <Text fw={500} c="#e619e6" component={Link} href="/Music">
+            Music
+          </Text>
+          <Text fw={500} c="#e619e6" component={Link} href="/Merch">
+            Merch
+          </Text>
+          <Text fw={500} c="#e619e6" component={Link} href="/Visuals">
+            Visuals
+          </Text>
+          <Text
+            fw={500}
+            c="#e619e6"
+            component={Link}
+            href="/Booking"
+          >
+            Booking
+          </Text>
         </Group>
 
-        <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+        <Menu>
+          <Menu.Target>
+            <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+          </Menu.Target>
+          <Menu.Dropdown>
+            <Menu.Item>
+              <Text fw={500} c="#e619e6" component={Link} href="/Music">
+                Music
+              </Text>
+            </Menu.Item>
+            <Menu.Item>
+              <Text fw={500} c="#e619e6" component={Link} href="/Merch">
+                Merch
+              </Text>
+            </Menu.Item>
+            <Menu.Item>
+              <Text fw={500} c="#e619e6" component={Link} href="/Visuals">
+                Visuals
+              </Text>
+            </Menu.Item>
+            <Menu.Item>
+              <Text fw={500} c="#e619e6" component={Link} href="/Booking">
+                Booking inquiries
+              </Text>
+            </Menu.Item>
+          </Menu.Dropdown>
+        </Menu>
       </Container>
     </header>
   );
