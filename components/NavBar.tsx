@@ -10,8 +10,11 @@ export function Navbar() {
   return (
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
-        <Image src="/logo.png" onClick={} width={55} height={55} alt="BriLive247" />
+        <Image src="/logo.png" width={55} height={55} alt="BriLive247" />
         <Group gap={12} visibleFrom="xs">
+          <Text fw={500} c="#e619e6" component={Link} href="/">
+            Home
+          </Text>
           <Text fw={500} c="#e619e6" component={Link} href="/Music">
             Music
           </Text>
@@ -21,12 +24,7 @@ export function Navbar() {
           <Text fw={500} c="#e619e6" component={Link} href="/Visuals">
             Visuals
           </Text>
-          <Text
-            fw={500}
-            c="#e619e6"
-            component={Link}
-            href="/Booking"
-          >
+          <Text fw={500} c="#e619e6" component={Link} href="/Booking">
             Booking
           </Text>
         </Group>
@@ -36,6 +34,11 @@ export function Navbar() {
             <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
           </Menu.Target>
           <Menu.Dropdown>
+            <Menu.Item>
+              <Text fw={500} c="#e619e6" component={Link} href="/">
+                Home
+              </Text>
+            </Menu.Item>
             <Menu.Item>
               <Text fw={500} c="#e619e6" component={Link} href="/Music">
                 Music
